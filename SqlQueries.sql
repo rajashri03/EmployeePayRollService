@@ -1,3 +1,4 @@
+use PayrollService;
 /*UC1-Create database*/
 Create database PayrollService;
 /*UC2-Create Table*/
@@ -21,3 +22,8 @@ select Min(Salary) as SalaryTotal from Employee_PayRoll where Gender='F' group b
 select Max(Salary) as SalaryTotal from Employee_PayRoll where Gender='M' group by Gender;
 select Avg(Salary) as SalaryTotal from Employee_PayRoll where Gender='M' group by Gender;
 select Count(Salary) as SalaryTotal from Employee_PayRoll where Gender='M' group by Gender;
+/*UC8*/
+Alter table Employee_PayRoll Add PhoneNumber varchar(200);
+Alter table Employee_PayRoll Add Address varchar(200);
+Alter table Employee_PayRoll Add DepartMent varchar(200) NOT NULL;
+Alter table Employee_PayRoll Alter Address SET DEFAULT 'ADS';
