@@ -27,3 +27,9 @@ Alter table Employee_PayRoll Add PhoneNumber varchar(200);
 Alter table Employee_PayRoll Add Address varchar(200);
 Alter table Employee_PayRoll Add DepartMent varchar(200) NOT NULL;
 Alter table Employee_PayRoll Alter Address SET DEFAULT 'ADS';
+/*UC9*/
+ALter table Employee_PayRoll RENAME Salary To BasicPay;
+Alter table Employee_PayRoll Add Deduction varchar(200);
+Alter table Employee_PayRoll Add TaxablePay varchar(200);
+Alter table Employee_PayRoll Add IncomeTax varchar(200);
+Alter table Employee_PayRoll Add NetPay varchar(200);
