@@ -33,3 +33,8 @@ Alter table Employee_PayRoll Add Deduction varchar(200);
 Alter table Employee_PayRoll Add TaxablePay varchar(200);
 Alter table Employee_PayRoll Add IncomeTax varchar(200);
 Alter table Employee_PayRoll Add NetPay varchar(200);
+/*UC10*/
+Insert into Employee_PayRoll(EmployeeName,Gender,BasicPay,PhoneNumber,Address,DepartMent,Deduction,TaxablePay,IncomeTax,NetPay)
+values('Terrisa','F',25000,9989898776,'Kagal','Sales',0,0,0,0);
+Insert into Employee_PayRoll(EmployeeName,Gender,BasicPay,PhoneNumber,Address,DepartMent,Deduction,TaxablePay,IncomeTax,NetPay)
+values('Terrisa','F',125000,9455538776,'Kagal','Marketing',10000,10000,5000,6000);
