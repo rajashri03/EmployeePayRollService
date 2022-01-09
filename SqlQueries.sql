@@ -10,3 +10,8 @@ Select * from Employee_PayRoll;
 /*select Salary of particular employee*/
 select Salary from Employee_PayRoll where EmployeeName='Rajashri';
 select * from Employee_PayRoll WHERE startdate BETWEEN CAST('2021-01-01' AS DATE)and CAST('2021-02-03' AS DATE);
+/*UC6*/
+/*Alter table*/
+Alter table Employee_PayRoll Add Gender varchar(100);
+/*update table*/
+update Employee_PayRoll set Gender='M' Where EmployeeName='Bill' or  EmployeeName='Charlie';
