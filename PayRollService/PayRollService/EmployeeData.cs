@@ -28,5 +28,24 @@ namespace PayRollService
                 Console.WriteLine("exception occured while creating database:" + e.Message + "\t");
             }
         }
+        /// <summary>
+        /// Create Table-Employee_PayRoll
+        /// </summary>
+        public static void CreateTables()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection(@"Data Source=AD-PC\SQLEXPRESS; Initial Catalog =PayrollService; Integrated Security = True;");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Create table Employee_PayRoll(id int identity(1,1)primary key,EmployeeName varchar(200),Salary varchar(200),startdate DATE);", con);
+                cmd.ExecuteNonQuery();
+                Console.WriteLine("Employee Payroll table has been  created successfully!");
+                con.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("exception occured while creating table:" + e.Message + "\t");
+            }
+        }
     }
 }
