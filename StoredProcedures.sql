@@ -44,3 +44,16 @@ SELECT EmployeeName,Gender,BasicPay,PhoneNumber,Address,Deduction,
 TaxablePay,IncomeTax,NetPay,DepartMent FROM Employee_PayRoll;
 END
 GO
+/****Delete Stored Procedure****/
+Create PROCEDURE SpEmployeePayroll_Delete
+(
+	@EmployeeName varchar(200)
+)
+AS
+BEGIN
+delete from Employee_PayRoll where EmployeeName=@EmployeeName
+SET NOCOUNT ON;
+SELECT EmployeeName,Gender,BasicPay,PhoneNumber,Address,Deduction,
+TaxablePay,IncomeTax,NetPay,DepartMent FROM Employee_PayRoll;
+END
+GO

@@ -74,7 +74,8 @@ namespace PayRollService
                     cmd.Parameters.AddWithValue("@IncomeTax", model.IncomeTax);
                     cmd.Parameters.AddWithValue("@NetPay", model.NetPay);
                     cmd.Parameters.AddWithValue("@DepartMent", model.DepartMent);
-                    this.connection.Open();var result = cmd.ExecuteNonQuery();
+                    this.connection.Open();
+                    var result = cmd.ExecuteNonQuery();
                     this.connection.Close();
                     if (result != 0)
                     {
@@ -115,7 +116,41 @@ namespace PayRollService
                     cmd.Parameters.AddWithValue("@IncomeTax", model.IncomeTax);
                     cmd.Parameters.AddWithValue("@NetPay", model.NetPay);
                     cmd.Parameters.AddWithValue("@DepartMent", model.DepartMent);
-                    this.connection.Open(); var result = cmd.ExecuteNonQuery();
+                    this.connection.Open(); 
+                    var result = cmd.ExecuteNonQuery();
+                    this.connection.Close();
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return false;
+        }
+        /// <summary>
+        /// Method to Delete data in database
+        /// </summary>
+        /// <param name="model"></param>
+        public bool DeleteEmployee(EmployeeModel model)
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    SqlCommand cmd = new SqlCommand("SpEmployeePayroll_Delete", this.connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@EmployeeName", model.EmployeeName);
+                    this.connection.Open(); 
+                    var result = cmd.ExecuteNonQuery();
                     this.connection.Close();
                     if (result != 0)
                     {

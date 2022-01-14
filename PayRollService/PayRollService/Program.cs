@@ -7,7 +7,7 @@ EmployeeModel emp = new EmployeeModel();
 EmployeeData empdata = new EmployeeData();
 while (status)
 {
-    Console.WriteLine("Select option\n1)Create Database\n2)Create Table\n3)Insert Data\n4)Update Record");
+    Console.WriteLine("Select option\n1)Create Database\n2)Create Table\n3)Insert Data\n4)Update Record\n5)Delete Record");
     int op = Convert.ToInt16(Console.ReadLine());
     switch (op)
     {
@@ -44,6 +44,11 @@ while (status)
             emp.DepartMent = "IT";
             empdata.UpdateEmployee(emp);
             Console.WriteLine("Record Updated");
+            break;
+        case 5:
+            emp.EmployeeName = "Ram";
+            empdata.DeleteEmployee(emp);
+            Console.WriteLine("Record Deleted");
             break;
         default:
             Console.WriteLine("Wrong Choice");
