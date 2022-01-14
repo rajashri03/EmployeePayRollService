@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -46,6 +47,51 @@ namespace PayRollService
             {
                 Console.WriteLine("exception occured while creating table:" + e.Message + "\t");
             }
+        }
+        //Created Connection file
+        public const string ConnFile = @"Data Source=AD-PC\SQLEXPRESS; Initial Catalog =PayrollService; Integrated Security = True;";
+        SqlConnection connection = new SqlConnection(ConnFile);
+
+        /// <summary>
+        /// Method to insert data in database
+        /// </summary>
+        /// <param name="model"></param>
+        public bool AddEmployee(EmployeeModel model)
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    SqlCommand cmd = new SqlCommand("SpEmployeePayroll", this.connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@EmployeeName", model.EmployeeName);
+                    cmd.Parameters.AddWithValue("@Gender", model.Gender);
+                    cmd.Parameters.AddWithValue("@BasicPay", model.BasicPay);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", model.PhoneNumber);
+                    cmd.Parameters.AddWithValue("@Address", model.Address);
+                    cmd.Parameters.AddWithValue("@Deduction", model.Deduction);
+                    cmd.Parameters.AddWithValue("@TaxablePay", model.TaxablePay);
+                    cmd.Parameters.AddWithValue("@IncomeTax", model.IncomeTax);
+                    cmd.Parameters.AddWithValue("@NetPay", model.NetPay);
+                    cmd.Parameters.AddWithValue("@DepartMent", model.DepartMent);
+                    this.connection.Open();var result = cmd.ExecuteNonQuery();
+                    this.connection.Close();
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return false;
         }
     }
 }
