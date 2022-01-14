@@ -93,5 +93,46 @@ namespace PayRollService
             }
             return false;
         }
+        /// <summary>
+        /// Method to Update data in database
+        /// </summary>
+        /// <param name="model"></param>
+        public bool UpdateEmployee(EmployeeModel model)
+        {
+            try
+            {
+                using (this.connection)
+                {
+                    SqlCommand cmd = new SqlCommand("SpEmployeePayroll_Update", this.connection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@EmployeeName", model.EmployeeName);
+                    cmd.Parameters.AddWithValue("@Gender", model.Gender);
+                    cmd.Parameters.AddWithValue("@BasicPay", model.BasicPay);
+                    cmd.Parameters.AddWithValue("@PhoneNumber", model.PhoneNumber);
+                    cmd.Parameters.AddWithValue("@Address", model.Address);
+                    cmd.Parameters.AddWithValue("@Deduction", model.Deduction);
+                    cmd.Parameters.AddWithValue("@TaxablePay", model.TaxablePay);
+                    cmd.Parameters.AddWithValue("@IncomeTax", model.IncomeTax);
+                    cmd.Parameters.AddWithValue("@NetPay", model.NetPay);
+                    cmd.Parameters.AddWithValue("@DepartMent", model.DepartMent);
+                    this.connection.Open(); var result = cmd.ExecuteNonQuery();
+                    this.connection.Close();
+                    if (result != 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+            return false;
+        }
     }
 }
