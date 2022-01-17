@@ -23,7 +23,12 @@ namespace EmployeePayrollTest
             DateTime startDateTime = DateTime.Now; //Before Excecution
             employeePayrollOperations.addEmployeeToPayroll(employeeDetails);
             DateTime stopdateTime = DateTime.Now; //After Execution
-            Console.WriteLine("Duration without Thread: " + (startDateTime - startDateTime)); // - operator to get time duration
+            Console.WriteLine("Duration without Thread: " + (startDateTime - stopdateTime)); // - operator to get time duration
+
+            DateTime startDateTime1 = DateTime.Now; //Before Excecution
+            employeePayrollOperations.addEmployeeToPayrollWithThread(employeeDetails);
+            DateTime stopdateTime1 = DateTime.Now; //After Execution
+            Console.WriteLine("Duration without Thread: " + (startDateTime1 - stopdateTime1)); // - operator to get time duration
         }
     }
 }

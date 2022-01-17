@@ -21,7 +21,24 @@ namespace PayRollService
                 Console.WriteLine("Employee Added: " + employeeData.EmployeeName);
             });
             Console.WriteLine(this.employeePayrollDetail.ToString());
+         }
 
+        /// <summary>
+        ///UC2-
+        /// </summary>
+        public void addEmployeeToPayrollWithThread(List<EmployeeModel> employeePayrollDetails)
+        {
+            employeePayrollDetail.ForEach(employeeData =>
+            {
+                Task thread = new Task(() =>
+                {
+                    Console.WriteLine("Employee being added: " + employeeData.EmployeeName);
+                    this.addEmployeePayroll(employeeData);
+                    Console.WriteLine("Employee Added: " + employeeData.EmployeeName);
+                });
+                thread.Start();
+            });
+            Console.WriteLine(this.employeePayrollDetail.Count);
         }
         public void addEmployeePayroll(EmployeeModel emp)
         {

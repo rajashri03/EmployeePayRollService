@@ -7,7 +7,7 @@ EmployeeModel emp = new EmployeeModel(1,"Ram","M", 45000,"9448987898","Kolhapur"
 EmployeeData empdata = new EmployeeData();
 while (status)
 {
-    Console.WriteLine("Select option\n1)Create Database\n2)Create Table\n3)Insert Data\n4)Update Record\n5)Delete Record");
+    Console.WriteLine("Select option\n1)Create Database\n2)Create Table\n3)Insert Data\n4)Update Record\n5)Delete Record\n");
     int op = Convert.ToInt16(Console.ReadLine());
     switch (op)
     {
