@@ -3,7 +3,7 @@ using PayRollService;
 
 Console.WriteLine("*************PayRollService******************");
 bool status = true;
-EmployeeModel emp = new EmployeeModel();
+EmployeeModel emp = new EmployeeModel(1,"Ram","M", 45000,"9448987898","Kolhapur","2000","1000","1000","500", "IT");
 EmployeeData empdata = new EmployeeData();
 while (status)
 {
@@ -32,16 +32,7 @@ while (status)
             Console.WriteLine("Record inserted");
             break;
         case 4:
-            emp.EmployeeName = "Ram";
-            emp.Gender = "M";
-            emp.BasicPay = 45000;
-            emp.PhoneNumber = "9448987898";
-            emp.Address = "Kolhapur";
-            emp.Deduction = "2000";
-            emp.TaxablePay = "1000";
-            emp.IncomeTax = "1000";
-            emp.NetPay = "500";
-            emp.DepartMent = "IT";
+         
             empdata.UpdateEmployee(emp);
             Console.WriteLine("Record Updated");
             break;
